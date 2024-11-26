@@ -1,0 +1,82 @@
+.nav-ul li {
+  display: inline-block;
+  padding: 10px;
+}
+.nav-ul li a {
+  color: rgb(4, 4, 76);
+  padding: 5px;
+  text-decoration: none;
+}
+.nav-ul {
+  padding: 5px;
+  margin: 0;
+  background-color: skyblue;
+}
+.nav-right {
+  text-align: right;
+}
+.logo {
+  height: 50px;
+  width: 45px;
+  float: left;
+  border-radius: 50%;
+  margin-left: 10px;
+  margin-top: 1px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+  background-color: skyblue;
+  color: rgb(4, 4, 76);
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.inputbox {
+  padding: 7px;
+  display: block;
+  border: solid 1px rgb(4, 4, 76);
+  width: 300px;
+  margin: 20px;
+}
+
+.register {
+  margin-left: 10%;
+}
+
+.login {
+  margin-left: 10%;
+  margin-top: 100px;
+}
+
+.divLogin,
+.product {
+  margin-left: 30%;
+}
+
+.divRegister {
+  margin-left: 30%;
+}
+
+.appButton {
+  margin: 20px;
+  width: 150px;
+  padding: 10px;
+  background-color: skyblue;
+  border: solid 1px rgb(4, 4, 76);
+  cursor: pointer;
+}
+.App-link {
+  color: #61dafb;
+}
