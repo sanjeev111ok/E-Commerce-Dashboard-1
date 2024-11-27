@@ -80,3 +80,9 @@
 .App-link {
   color: #61dafb;
 }
+.invalid-input {
+  color: red;
+  margin-top: -20px;
+  margin-left: 20px;
+  display: block;
+}
