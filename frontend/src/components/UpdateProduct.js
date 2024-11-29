@@ -1,10 +1,25 @@
-import React from "react"
+import React, { useEffect } from "react"
+import { useParams } from "react-router-dom"
 
 const UpdateProduct = () => {
   const [name, setName] = React.useState()
   const [price, setPrice] = React.useState()
   const [category, setCategory] = React.useState()
   const [company, setCompany] = React.useState()
+  const params = useParams()
+
+  useEffect(() => {
+    getProductDetails()
+  }, [])
+
+  const getProductDetails = async () => {
+    let result = await fetch(`http://localhost:3000/product/${params.id}`)
+    result = await result.json()
+    setName(result.name)
+    setPrice(result.price)
+    setCategory(result.category)
+    setCompany(result.company)
+  }
 
   const updateProduct = async () => {
     console.warn(name, price, category, company)
@@ -49,7 +64,7 @@ const UpdateProduct = () => {
         }}
       ></input>{" "}
       <button className="appButton" onClick={updateProduct}>
-    Update Product
+        Update Product
       </button>
     </div>
   )
