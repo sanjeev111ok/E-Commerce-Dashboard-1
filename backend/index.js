@@ -45,12 +45,21 @@ app.delete("/products/:id", async (req, res) => {
   res.send(result)
 })
 app.get("/product/:id", async (req, res) => {
-  let result =await Product.findOne({ _id: req.params.id })
+  let result = await Product.findOne({ _id: req.params.id })
   if (result) {
     res.send(result)
   } else {
     res.send({ Result: "No record found" })
   }
+})
+app.put("/product/:id", async (req, res) => {
+  let result = await Product.updateOne(
+    { _id: req.params.id },
+    {
+      $set: req.body,
+    }
+  )
+  res.send(result)
 })
 
 app.listen(3000)
