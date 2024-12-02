@@ -1,11 +1,12 @@
 const express = require("express")
 const cors = require("cors")
 require("./db/config")
+require("dotenv").config()
 const User = require("./db/User")
 const Product = require("./db/Product")
 const app = express()
 const Jwt = require("jsonwebtoken")
-const jwtKey = "e-comm"
+const jwtKey = process.env.KEY
 
 app.use(express.json())
 app.use(cors())
@@ -38,13 +39,13 @@ app.post("/login", async (req, res) => {
     res.send({ result: "No user found" })
   }
 })
-app.post("/add-product",verifyToken, async (req, res) => {
+app.post("/add-product", verifyToken, async (req, res) => {
   let product = new Product(req.body)
   let result = await product.save()
   res.send(result)
 })
 
-app.get("/products",verifyToken, async (req, res) => {
+app.get("/products", verifyToken, async (req, res) => {
   let products = await Product.find()
   if (products.length > 0) {
     res.send(products)
@@ -52,11 +53,11 @@ app.get("/products",verifyToken, async (req, res) => {
     res.send({ result: "Products not found" })
   }
 })
-app.delete("/products/:id",verifyToken, async (req, res) => {
+app.delete("/products/:id", verifyToken, async (req, res) => {
   const result = await Product.deleteOne({ _id: req.params.id })
   res.send(result)
 })
-app.get("/product/:id",verifyToken, async (req, res) => {
+app.get("/product/:id", verifyToken, async (req, res) => {
   let result = await Product.findOne({ _id: req.params.id })
   if (result) {
     res.send(result)
@@ -64,7 +65,7 @@ app.get("/product/:id",verifyToken, async (req, res) => {
     res.send({ Result: "No record found" })
   }
 })
-app.put("/product/:id",verifyToken, async (req, res) => {
+app.put("/product/:id", verifyToken, async (req, res) => {
   let result = await Product.updateOne(
     { _id: req.params.id },
     {
@@ -101,4 +102,4 @@ function verifyToken(req, res, next) {
   }
 }
 
-app.listen(3000)
+app.listen(process.env.PORT)
